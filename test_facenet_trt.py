@@ -11,9 +11,9 @@ from utils import *
 TRT_LOGGER = trt.Logger(trt.Logger.INTERNAL_ERROR)
 trt_runtime = trt.Runtime(TRT_LOGGER)
 
-engine_path = "./engine.plan"
-input_file_path = '/home/jetson-tx2/tensorrt/face_images/anas.png'
-dataset_embeddings_path = '/home/jetson-tx2/tensorrt/embeddings/riotu_face_facenet128_embeddings_latest.npz'
+engine_path = "./facenet_engine.plan"
+input_file_path = 'anas.png'
+dataset_embeddings_path = '/home/jetson-nx/tensorrt/embeddings/embeddings-yasser.npz'
 HEIGHT = 160
 WIDTH = 160
 
@@ -26,7 +26,7 @@ faces_embeddings = normalize_vectors(faces_embeddings)
 
 detector = MTCNN()
 
-face_array = extract_face_from_image(input_file_path)
+face_array = extract_face_from_image(input_file_path, detector)
 
 face_pixels = face_array
 # scale pixel values

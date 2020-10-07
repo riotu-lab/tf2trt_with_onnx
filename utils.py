@@ -1,5 +1,6 @@
 from sklearn.preprocessing import Normalizer
-
+from PIL import Image
+import numpy as np
 
 def normalize_vectors(vectors):
     # normalize input vectors
@@ -20,7 +21,7 @@ def predict_using_min_l2_distance(faces_embeddings, labels, face_to_predict_embe
 
     return labels[index]
     
-def extract_face_from_image(input_file_path):
+def extract_face_from_image(input_file_path, detector):
 	# load image from file
 	image = Image.open(input_file_path)
 	# convert to RGB, if needed
@@ -41,3 +42,5 @@ def extract_face_from_image(input_file_path):
 	image = Image.fromarray(face)
 	image = image.resize((160, 160))
 	face_array = np.asarray(image)
+	
+	return face_array
