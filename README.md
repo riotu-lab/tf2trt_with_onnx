@@ -1,9 +1,25 @@
 # tf2trt_wtih_onnx
 This repo documnet how to convert Tensorflow / Keras model to TRT engine using ONNX.  
-Note: If [tf2onnx](https://github.com/onnx/tensorflow-onnx) didn't work on Keras model try to use [keras2onnx](https://github.com/onnx/keras-onnx)
 
-## TODOs
-- Try [keras2onnx](https://github.com/onnx/keras-onnx) on Facenet model and compare results
-- Try [tf2onnx](https://github.com/onnx/tensorflow-onnx) with `--fold_const` option. which may benefit the optimization as stated in [repo's README.md](https://github.com/onnx/tensorflow-onnx#--fold_const) :
-> When set, TensorFlow fold_constants transformation is applied before conversion. This benefits features including Transpose optimization (e.g. Transpose operations introduced during tf-graph-to-onnx-graph conversion will be removed), and RNN unit conversion (for example LSTM). Older TensorFlow version might run into issues with this option depending on the model.
-- Try to freeze the graph as using [freeze_graph.py](https://github.com/davidsandberg/facenet/blob/master/src/freeze_graph.py) in Facenet repo.
+## Deprication of Caffe Parser and UFF Parser in TensorRT 7
+Note this quote from the [official TensorRT Release Notes](https://docs.nvidia.com/deeplearning/tensorrt/archives/tensorrt-700/tensorrt-release-notes/tensorrt-7.html#rel_7-0-0):
+
+> Deprecation of Caffe Parser and UFF Parser - We are deprecating Caffe Parser and UFF Parser in TensorRT 7. They will be tested and functional in the next major release of TensorRT 8, but we plan to remove the support in the subsequent major release. Plan to migrate your workflow to use tf2onnx, keras2onnx or TensorFlow-TensorRT (TF-TRT) for deployment.
+
+In this repository, we will use [tf2onnx](https://github.com/onnx/tensorflow-onnx) to convert Keras model to TRT engine.  
+
+## ONNX Workflow 
+
+![ONNX-workflow-1024x195](https://user-images.githubusercontent.com/13350394/96366303-8d8f4f00-114f-11eb-9a41-994807beb1aa.jpg)
+*ONNX Workflow - [image source](https://developer.nvidia.com/blog/speeding-up-deep-learning-inference-using-tensorflow-onnx-and-tensorrt/)*.   
+
+1. Convert the TensorFlow/Keras model to a .pb file.
+2. Convert the .pb file to the ONNX format.
+3. Create a TensorRT engine.
+4. Run inference from the TensorRT engine.
+
+## Jupyter Notebook
+The steps are documented in [this Jupyter notebook](convert_tf_keras_model_to_trt_using_onnx.ipynb).
+
+## Known Issues
+
