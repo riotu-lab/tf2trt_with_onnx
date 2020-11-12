@@ -22,4 +22,8 @@ In this repository, we will use [tf2onnx](https://github.com/onnx/tensorflow-onn
 The steps are documented in [this Jupyter notebook](convert_tf_keras_model_to_trt_using_onnx.ipynb).
 
 ## Known Issues
+**Protobuf compiler not found while installing tf2onnx tool**  
+![image](https://user-images.githubusercontent.com/13350394/98991122-72401580-253c-11eb-9905-4512f1ad393b.png)
 
+**Solution**  
+`sudo apt-get install  libprotobuf-dev protobuf-compiler`
