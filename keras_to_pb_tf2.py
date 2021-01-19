@@ -2,7 +2,7 @@ import tensorflow as tf
 from tensorflow.compat.v1 import graph_util
 from tensorflow.keras.models import Model
 from tensorflow.python.keras import backend as K
-from keras.models import load_model
+from tensorflow.keras.models import load_model
 import argparse
 
 tf.compat.v1.disable_eager_execution()
